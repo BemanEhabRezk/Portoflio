@@ -1,0 +1,60 @@
+Here's the combined code for your portfolio website in a single file (index.html):
+
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <style>
+    /* Add your styles here */
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Portfolio</h1>
+  </header>
+  <main>
+    <form id="portfolio-form">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required></textarea>
+      <label for="work">Upload Your Work (Images only):</label>
+      <input type="file" id="work" name="work" accept="image/*" multiple required>
+      <button type="submit">Submit Portfolio</button>
+    </form>
+    <div id="portfolio-display"></div>
+  </main>
+  <script>
+const form = document.getElementById('portfolio-form');
+const portfolioDisplay = document.getElementById('portfolio-display');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const description = document.getElementById('description').value;
+
+  // Handle user input validation (e.g., name length, description content)
+
+  const workInput = document.getElementById('work');
+  const workFiles = workInput.files;
+
+  // Handle file validation (e.g., allowed file types, size limits)
+
+  // Implement secure file uploading logic (e.g., using a cloud storage service or server-side validation)
+
+  // Assuming successful validation and upload:
+  portfolioDisplay.innerHTML = `
+    <h2>${name}'s Portfolio</h2>
+    <p>${description}</p>
+    <ul>
+      ${Array.from(workFiles).map(file => `<li>${file.name}</li>`).join('')}
+    </ul>
+  `;
+});
+</script>
+</body>
+</html>
